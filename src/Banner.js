@@ -12,8 +12,8 @@ function Banner() {
             <div className="banner_contents">
                 <h1 className="banner_title">Movie Name</h1>
                 <div className="banner_buttons">
-                    <button>Play</button>
-                    <button>My List</button>
+                    <button className="banner_button">Play</button>
+                    <button className="banner_button">My List</button>
                 </div>
                 <h1 className="banner_description">This is a test description</h1>
             </div>
