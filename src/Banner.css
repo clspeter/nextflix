@@ -1,14 +1,22 @@
 .banner {
     position: relative;
     color: white;
-    object-fit: cover;
+    object-fit: contain;
+    max-height: 848px;
+}
+
+.banner_poster_size {
+    object-fit: contain;
+    width: 100%;
+    visibility: hidden;
 }
 
 .banner_contents {
-    margin-left: 30px;
-    padding-top: 140px;
+    top: 50%;
     height: 190px;
     padding-bottom: 0.3rem;
+    position: absolute;
+    margin-left: 2rem;
 }
 
 .banner_description {
@@ -24,7 +32,10 @@
 
 .banner--fadeBottom {
     height: 7.4rem;
+    width: 100%;
     background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111);
+    position: absolute;
+    bottom: 0;
 }
 
 .banner_button {

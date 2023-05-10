@@ -33,8 +33,13 @@ function Banner() {
             style={{
                 backgroundSize: "cover",
                 backgroundImage: `url(${poster})`,
-                backgroundPosition: "center center"
+                backgroundPosition: "center 0%",
+                backgroundRepeat: "no-repeat"
             }}>
+            <img
+                className="banner_poster_size"
+                src={poster}
+                alt="movie banner" />
             <div className="banner_contents">
                 <h1 className="banner_title">{movie.name}</h1>
                 <div className="banner_buttons">
@@ -43,7 +48,6 @@ function Banner() {
                 </div>
                 <h1 className="banner_description">{truncate(movie.overview, 1000)}</h1>
             </div>
-
             <div className="banner--fadeBottom" />
         </header>
     )
