@@ -5,18 +5,26 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginScreen from './screens/LoginScreen';
 import StartScreen from './screens/StartScreen';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout, selectUser } from "./features/userSlice";
+
 
 function App() {
   const auth = getAuth();
-  const user = null;
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
       if (userAuth) {
-        console.log("user logged in")
-        console.log(userAuth);
+        dispatch(
+          login({
+            uid: userAuth.uid,
+            email: userAuth.email
+          }))
       } else {
         console.log("no user")
+        dispatch(logout)
       }
     })
 
