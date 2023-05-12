@@ -1,6 +1,6 @@
 import React from 'react'
 import './Row.css'
-import axios from './api/axios'
+import axios from '../api/axios'
 import PropTypes from 'prop-types'
 
 Row.propTypes = {

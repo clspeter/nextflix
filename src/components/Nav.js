@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import './Nav.css'
 
-export default function Nav() {
+export default function Nav(isSignedIn = false) {
     const [show, handleShow] = React.useState(false);
 
     const transitionNavBar = () => {
