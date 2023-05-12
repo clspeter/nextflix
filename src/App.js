@@ -2,7 +2,8 @@ import React from 'react';
 import './App.css';
 import HomeScreen from './screens/HomeScreen';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LoginScreen from './screens/StartScreen';
+import LoginScreen from './screens/LoginScreen';
+import StartScreen from './screens/StartScreen';
 
 function App() {
 
@@ -12,11 +13,13 @@ function App() {
     <div className="app">
       <BrowserRouter>
         {!user ? (
-          <LoginScreen />
+          <Routes>
+            <Route exact path="/" element={<StartScreen />} />
+            <Route exact path="/login" element={<LoginScreen />} />
+          </Routes>
         ) : (
           <Routes>
-            <Route exact path="/" element={<HomeScreen />}>
-            </Route>
+            <Route exact path="/" element={<HomeScreen />} />
           </Routes>
         )}
       </BrowserRouter>
