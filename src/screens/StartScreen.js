@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import './StartScreen.css'
-import SingupScreen from './SingupScreen'
+import LoginScreen from './LoginScreen'
+import { useNavigate } from "react-router-dom";
 
 
 function StartScreen() {
     const [signIn, setSignIn] = useState(false);
+    const navigate = useNavigate();
     if (signIn) {
         return (
-            <SingupScreen />
+            <LoginScreen />
         )
     }
     else {
@@ -15,7 +17,7 @@ function StartScreen() {
             <div>
                 <div className="startScreen">
                     <img className="startScreen_logo" src="/nextflix-logo.png" alt="" />
-                    <button className="login_button" onClick={() => setSignIn(true)}>Log In</button>
+                    <button className="login_button" onClick={() => navigate('/login')}>Log In</button>
                     <div className="startScreen_top" />
                     <div className="startScreen_background">
                         <div className="startScreen_gradient" />
@@ -27,7 +29,7 @@ function StartScreen() {
                             <div className="startScreen_input">
                                 <form>
                                     <input type="email" placeholder="Email Address" />
-                                    <button onClick={() => setSignIn(true)} className="startScreen_getStarted">Get Started &gt;</button>
+                                    <button className="startScreen_getStarted">Get Started &gt;</button>
                                 </form>
                             </div>
                         </div>
