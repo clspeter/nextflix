@@ -27,8 +27,9 @@ function App() {
       } else {
         console.log("no user")
         dispatch(logout())
+        navigate('/')
       }
-      navigate('/')
+
     })
     return unsubscribe
   }, [dispatch])
