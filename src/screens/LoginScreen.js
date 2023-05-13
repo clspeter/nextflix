@@ -40,7 +40,7 @@ function LoginScreen() {
 
     const registerHandler = (e) => {
         e.preventDefault();
-        createUserWithEmailAndPassword(
+        createUserWithEmailAndPassword(auth,
             emailRef.current.value, passwordRef.current.value)
             .then((authUser) => {
                 console.log(authUser)
