@@ -1,9 +1,13 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import './LoginScreen.css'
 import SingupScreen from './SingupScreen'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, redirect } from 'react-router-dom'
 import { auth } from '../firebase'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { useSelector } from "react-redux"
+import { selectUser } from "../features/userSlice"
+
+
 
 
 
@@ -12,6 +16,14 @@ function LoginScreen() {
     const navigate = useNavigate();
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
+
+    const user = useSelector(selectUser)
+
+    useEffect(() => {
+        if (!user) {
+            redirect("/")
+        }
+    }, [user])
 
     const signInHandler = (e) => {
         e.preventDefault();

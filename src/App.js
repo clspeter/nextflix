@@ -4,10 +4,10 @@ import HomeScreen from './screens/HomeScreen';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginScreen from './screens/LoginScreen';
 import StartScreen from './screens/StartScreen';
+import ProfileScreen from './screens/ProfileScreen';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "./features/userSlice";
-
 
 function App() {
   const auth = getAuth();
@@ -17,6 +17,7 @@ function App() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
       if (userAuth) {
+        console.log("user")
         dispatch(
           login({
             uid: userAuth.uid,
@@ -24,24 +25,26 @@ function App() {
           }))
       } else {
         console.log("no user")
-        dispatch(logout)
+        dispatch(logout())
       }
     })
 
+
     return unsubscribe
-  }, [])
+  }, [dispatch])
 
   return (
     <div className="app">
       <BrowserRouter>
         {!user ? (
           <Routes>
-            <Route exact path="/" element={<StartScreen />} />
-            <Route exact path="/login" element={<LoginScreen />} />
+            <Route index element={<StartScreen />} />
+            <Route path="/login" element={<LoginScreen />} />
           </Routes>
         ) : (
           <Routes>
-            <Route exact path="/" element={<HomeScreen />} />
+            <Route path="/profile" element={<ProfileScreen />} />
+            <Route index element={<HomeScreen />} />
           </Routes>
         )}
       </BrowserRouter>
