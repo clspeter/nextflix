@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './StartScreen.css'
 import LoginScreen from './LoginScreen'
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,12 @@ import { useNavigate } from "react-router-dom";
 function StartScreen() {
     const [signIn, setSignIn] = useState(false);
     const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+
+    useEffect(() => {
+        console.log(email)
+    }, [email])
+
     if (signIn) {
         return (
             <LoginScreen />
@@ -28,8 +34,10 @@ function StartScreen() {
 
                             <div className="startScreen_input">
                                 <form>
-                                    <input type="email" placeholder="Email Address" />
-                                    <button className="startScreen_getStarted">Get Started &gt;</button>
+                                    <input type="email" placeholder="Email Address" value={email} onChange={
+                                        (e) => setEmail(e.target.value)
+                                    } />
+                                    <button className="startScreen_getStarted" onClick={() => navigate('/login', { state: { email } })}>Get Started &gt;</button>
                                 </form>
                             </div>
                         </div>

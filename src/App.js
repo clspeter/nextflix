@@ -29,7 +29,6 @@ function App() {
         dispatch(logout())
         navigate('/')
       }
-
     })
     return unsubscribe
   }, [dispatch])
@@ -38,8 +37,8 @@ function App() {
     <div className="app">
       {!user ? (
         <Routes>
-          <Route index element={<StartScreen />} />
           <Route path="/login" element={<LoginScreen />} />
+          <Route index element={<StartScreen />} />
         </Routes>
       ) : (
         <Routes>

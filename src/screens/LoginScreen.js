@@ -1,21 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react'
 import './LoginScreen.css'
 import SingupScreen from './SingupScreen'
-import { useNavigate, redirect } from 'react-router-dom'
+import { useNavigate, redirect, useLocation } from 'react-router-dom'
 import { auth } from '../firebase'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useSelector } from "react-redux"
 import { selectUser } from "../features/userSlice"
-
-
-
-
 
 function LoginScreen() {
     const [signIn, setSignIn] = useState(false);
     const navigate = useNavigate();
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
+    const location = useLocation();
 
     const user = useSelector(selectUser)
 
@@ -25,6 +22,12 @@ function LoginScreen() {
         }
     }, [user])
 
+    useEffect(() => {
+        if (location.state) {
+            emailRef.current.value = location.state.email
+        }
+    }, [location])
+
     const signInHandler = (e) => {
         e.preventDefault();
         signInWithEmailAndPassword(
@@ -32,6 +35,7 @@ function LoginScreen() {
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log(user)
+                navigate('/')
             })
             .catch((error) => {
                 alert(error.message)
@@ -44,6 +48,7 @@ function LoginScreen() {
             emailRef.current.value, passwordRef.current.value)
             .then((authUser) => {
                 console.log(authUser)
+                navigate('/')
             })
             .catch((error) => {
                 alert(error.message)
