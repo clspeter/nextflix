@@ -8,6 +8,7 @@ import ProfileScreen from './screens/ProfileScreen';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "./features/userSlice";
+import { clearProducts } from "./features/productSlice"
 
 function App() {
   const auth = getAuth();
@@ -27,11 +28,14 @@ function App() {
       } else {
         console.log("no user")
         dispatch(logout())
+        dispatch(clearProducts())
         navigate('/')
       }
     })
     return unsubscribe
   }, [dispatch])
+
+
 
   return (
     <div className="app">

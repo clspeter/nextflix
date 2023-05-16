@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { collection, query, where, getDocs, doc, addDoc, onSnapshot } from 'firebase/firestore';
 import { db } from "../firebase"
 import "./Plans.css"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
+import { setProduct, selectProduct } from "../features/productSlice";
 import { loadStripe } from "@stripe/stripe-js";
 
 function Plans() {
-    const [products, setProducts] = useState([])
+    const dispatch = useDispatch()
+    const products = useSelector(selectProduct)
     const user = useSelector(selectUser)
     const [subscription, setSubscription] = useState(null)
 
@@ -33,8 +35,9 @@ function Plans() {
             const querySnapshot = await getDocs(q);
             const fetchedProducts = {};
 
-            querySnapshot.forEach(async (productDoc) => {
+            const pricePromises = querySnapshot.docs.map(async (productDoc) => {
                 fetchedProducts[productDoc.id] = productDoc.data();
+
 
                 const priceSnap = await getDocs(collection(productDoc.ref, "prices"));
                 priceSnap.forEach((price) => {
@@ -44,7 +47,9 @@ function Plans() {
                     };
                 });
             });
-            setProducts(fetchedProducts);
+            await Promise.all(pricePromises);
+            dispatch(setProduct(fetchedProducts))
+
         };
 
         fetchProducts();
@@ -79,7 +84,6 @@ function Plans() {
     const Button = ({ isCurrentPackage, priceId }) => {
         const [buttonText, setButtonText] = useState('Subscribe')
         const [buttonDisabled, setButtonDisabled] = useState(false)
-        const [priceIdButton, setPriceIdButton] = useState('')
 
         useEffect(() => {
             console.log(priceId)
@@ -87,21 +91,22 @@ function Plans() {
                 setButtonText('Current Package')
                 setButtonDisabled(true)
             }
-            setPriceIdButton(priceId)
         }, [subscription, priceId, isCurrentPackage])
 
-        useEffect(() => {
-            console.log(priceIdButton)
-        }, [priceIdButton])
 
         return (
             <button onClick={() => {
-                loadCheckout(priceIdButton)
+                loadCheckout(priceId)
                 setButtonText('Loading...')
                 setButtonDisabled(true)
             }} className="plans_subscribe" disabled={buttonDisabled}>{buttonText}</button>
         )
     }
+
+    useEffect(() => {
+        console.log(products)
+    }, [])
+
 
     return (
         <div className="plans">
