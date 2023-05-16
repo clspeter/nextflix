@@ -122,10 +122,10 @@ function Plans() {
                             <h5>{productData.name}</h5>
                             <h6>{productData.description}</h6>
                         </div>
-                        <button onClick={() => {
+                        {/*                         <button onClick={() => {
                             loadCheckout(productData.prices.priceId)
-                        }} className="plans_subscribe" disabled={isCurrentPackage}>{isCurrentPackage ? 'Current Package' : 'Subscribe'}</button>
-                        {/* <Button isCurrentPackage={isCurrentPackage} priceId={productData.prices?.priceId} /> */}
+                        }} className="plans_subscribe" disabled={isCurrentPackage}>{isCurrentPackage ? 'Current Package' : 'Subscribe'}</button> */}
+                        <Button isCurrentPackage={isCurrentPackage} priceId={productData.prices?.priceId} />
                     </div>
                 )
             })}
