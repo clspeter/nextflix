@@ -1,46 +1,23 @@
-# Getting Started with Create React App and Redux
+# nextfilx-stripe-subscription
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+一個簡單模仿Netflix的網站，Redux做使用者狀態管理，Firebase 9做帳號認證、串接Stripe、與資料庫
 
-## Available Scripts
+主要展示的是實作訂閱系統和使用者狀態管理，網站用純CSS寫沒有多作琢磨
 
-In the project directory, you can run:
+## Technologies
 
-### `npm start`
+Firebase : user database, stirpe 整合 and host
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Redux : 使用者狀態管理
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Host on [Firebase](https://nextflix-54929.web.app/)
 
-### `npm test`
+### 心得
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+教學裡是用Firebase 8，自己實做了Firebase 8升級成9，SDK均改成模組化，全部重新改寫花了不少時間
 
-### `npm run build`
+## Credit
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Thanks to [Sonny Sangha](https://www.facebook.com/sonny.sangha.3) who made a great [video](https://www.youtube.com/watch?v=HW5roUF2RLg) guide for netflix-clone.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
