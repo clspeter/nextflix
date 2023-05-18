@@ -1,6 +1,6 @@
 # nextfilx-stripe-subscription
 
-一個簡單模仿Netflix 及可訂閱的網站，Redux做使用者狀態管理，Firebase 9做帳號認證、串接Stripe、與資料庫
+使用React.js製作簡單模仿Netflix 及訂閱功能的網站，Redux做使用者狀態管理，Firebase 9做帳號認證、串接Stripe、與資料庫
 
 首頁自己重新寫過，是和最新的官網做範本，主要展示的是實作Stripe訂閱系統、使用者狀態管理和認證，網站用純CSS寫沒有多作琢磨
 
