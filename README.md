@@ -1,20 +1,24 @@
 # nextfilx-stripe-subscription
 
-一個簡單模仿Netflix的網站，Redux做使用者狀態管理，Firebase 9做帳號認證、串接Stripe、與資料庫
+一個簡單模仿Netflix 及可訂閱的網站，Redux做使用者狀態管理，Firebase 9做帳號認證、串接Stripe、與資料庫
 
-首頁自己重新寫過是和最新的官網做模板，主要展示的是實作訂閱系統和使用者狀態管理，網站用純CSS寫沒有多作琢磨
+首頁自己重新寫過，是和最新的官網做範本，主要展示的是實作Stripe訂閱系統、使用者狀態管理和認證，網站用純CSS寫沒有多作琢磨
+
+測試用卡號4242 4242 4242 4242  02/42(一直輸入42即可)
 
 ## Technologies
 
-Firebase : user database, stirpe 整合 and host
+Firebase : user auth and database, stirpe intergarion and host
 
-Redux : 使用者狀態管理
+Redux : user state
 
 ### Host on [Firebase](https://nextflix-54929.web.app/)
 
 ### 心得
 
-教學裡是用Firebase 8，自己實做了Firebase 8升級成9，SDK均改成模組化，全部重新改寫花了不少時間
+教學裡是用Firebase 8，自己實做了Firebase 8升級成9，SDK均改成模組化，全部重新改寫
+
+首頁也改成最新版
 
 ## Credit
 
