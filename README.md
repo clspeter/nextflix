@@ -6,6 +6,8 @@
 
 測試用卡號4242 4242 4242 4242  02/42(一直輸入42即可)
 
+[screen-capture (4).webm](https://github.com/clspeter/nextflix/assets/16301430/51ecfb10-d7e8-4f2e-a126-847f7a45b830)
+
 ## Technologies
 
 Firebase : user auth and database, stirpe intergarion and host
